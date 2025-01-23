@@ -1,0 +1,463 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arisha Khan - IT Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Import Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap');
+
+        /* Reset and Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #eaeaea;
+            background: #1c1c1c; /* Dark background for the whole page */
+            scroll-behavior: smooth;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(-50px);
+            animation: fadeInUp 1s forwards ease-in-out;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Header Animations */
+        @keyframes dropInName {
+            0% { transform: translateY(-50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes dropInTitle {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 10px 20px;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav .hamburger {
+            font-size: 2rem;
+            cursor: pointer;
+            color: white;
+            transition: color 0.3s, transform 0.3s;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        nav .hamburger:hover {
+            color: #4CAF50;
+            transform: rotate(90deg);
+        }
+        nav .menu {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background: #1f1f1f;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        nav .menu a {
+            padding: 15px 20px;
+            text-align: center;
+            text-decoration: none;
+            color: #f0f0f0;
+            font-size: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: background 0.3s;
+        }
+        nav .menu a:last-child {
+            border-bottom: none;
+        }
+        nav .menu a:hover {
+            background: #4CAF50;
+            color: white;
+        }
+        nav.active .menu {
+            display: flex;
+        }
+
+        /* Hero Section */
+        header {
+            background: linear-gradient(135deg, #4CAF50, #2C3E50); /* Gradient background */
+            height: 100vh;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            padding: 20px;
+        }
+        header h1 {
+            font-size: 4rem;
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 10px;
+            animation: dropInName 1s ease-in-out;
+        }
+        header p {
+            font-size: 1.5rem;
+            font-family: 'Roboto', sans-serif;
+            margin-bottom: 20px;
+            animation: dropInTitle 1.5s ease-in-out;
+        }
+        header .titles {
+            font-size: 1.3rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            color: #dcdcdc;
+            margin-bottom: 30px;
+        }
+        header a {
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        header a:hover {
+            background: #3e8e41;
+        }
+
+        /* Skills Section */
+        #skills {
+            background-color: #34495E;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        #skills h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .skill {
+            background: #2C3E50;
+            border-radius: 10px;
+            padding: 20px;
+            width: 220px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            color: white;
+            cursor: pointer;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .skill:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        .skill i {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        .skill h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        .skill p {
+            font-size: 1rem;
+            color: #BDC3C7;
+        }
+
+        /* Services Section */
+        #services {
+            background-color: #2C3E50;
+            padding: 60px 20px;
+        }
+        #services h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .service {
+            background: #34495E; /* Darker blue-grey */
+            border-radius: 10px;
+            padding: 20px;
+            width: 220px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            color: white;
+            cursor: pointer;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        .service i {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        .service h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        .service p {
+            font-size: 1rem;
+            color: #BDC3C7;
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: #2C3E50;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        #contact h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+        .contact-info a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        .contact-info a:hover {
+            color: #4CAF50;
+        }
+
+        /* Message Section */
+        .message-section {
+            text-align: center;
+            padding: 15px 0;
+            background-color: #2C3E50;
+        }
+        .message-section a {
+            font-size: 1.2rem;
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        .message-section a:hover {
+            color: #f0f0f0;
+        }
+
+        /* Footer */
+        footer {
+            background: #111;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .menu {
+                display: flex;
+            }
+            .service, .skill {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+        <div class="menu">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home">
+        <h1>Arisha Khan</h1>
+        <p>Web, App Developer & IT Expert</p>
+        <div class="titles">
+            <p>Transforming Ideas into Digital Solutions</p>
+        </div>
+        <a href="#contact">Get in Touch</a>
+    </header>
+
+    <!-- Message Option -->
+    <section class="message-section">
+        <a href="mailto:ariiishaaaaaaaa@gmail.com">Send a Message</a>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="fade-in">
+        <h2>My Skills</h2>
+        <div class="skills">
+            <div class="skill">
+                <i class="fab fa-html5"></i>
+                <h3>HTML</h3>
+                <p>Structure and layout of websites with clean, semantic code.</p>
+            </div>
+            <div class="skill">
+                <i class="fab fa-css3-alt"></i>
+                <h3>CSS</h3>
+                <p>Styling and designing responsive websites with CSS frameworks like Bootstrap.</p>
+            </div>
+            <div class="skill">
+                <i class="fab fa-js-square"></i>
+                <h3>JavaScript</h3>
+                <p>Client-side scripting for interactive and dynamic web experiences.</p>
+            </div>
+            <div class="skill">
+                <i class="fab fa-python"></i>
+                <h3>Python</h3>
+                <p>Server-side scripting and data analysis using Python frameworks like Django.</p>
+            </div>
+            <div class="skill">
+                <i class="fas fa-cogs"></i>
+                <h3>C++</h3>
+                <p>Object-oriented programming and high-performance computing solutions.</p>
+            </div>
+            <div class="skill">
+                <i class="fas fa-cogs"></i>
+                <h3>Java</h3>
+                <p>Building cross-platform applications and back-end services with Java.</p>
+            </div>
+            <div class="skill">
+                <i class="fas fa-database"></i>
+                <h3>SQL</h3>
+                <p>Efficient database management, queries, and optimization.</p>
+            </div>
+            <div class="skill">
+                <i class="fab fa-github"></i>
+                <h3>Git</h3>
+                <p>Version control and collaboration using Git and GitHub.</p>
+            </div>
+            <div class="skill">
+                <i class="fab fa-java"></i>
+                <h3>VB.NET</h3>
+                <p>Desktop application development using Visual Basic and .NET frameworks.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="fade-in">
+        <h2>My Services</h2>
+        <div class="services">
+            <div class="service">
+                <i class="fas fa-laptop-code"></i>
+                <h3>Web Development</h3>
+                <p>Building responsive and optimized websites tailored to your needs.</p>
+            </div>
+            <div class="service">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>App Development</h3>
+                <p>Creating native and hybrid apps for Android and iOS platforms.</p>
+            </div>
+            <div class="service">
+                <i class="fas fa-search"></i>
+                <h3>SEO Services</h3>
+                <p>Optimizing websites for search engines to increase visibility.</p>
+            </div>
+            <div class="service">
+                <i class="fas fa-cogs"></i>
+                <h3>Consulting</h3>
+                <p>Providing IT solutions and technical guidance for businesses.</p>
+            </div>
+            <div class="service">
+                <i class="fas fa-camera"></i>
+                <h3>CCTV Cameras</h3>
+                <p>Installing and configuring CCTV surveillance systems for your security.</p>
+            </div>
+            <div class="service">
+                <i class="fas fa-fingerprint"></i>
+                <h3>Biometric</h3>
+                <p>Providing biometric solutions for secure access control systems.</p>
+            </div>
+            <div class="service">
+                <i class="fas fa-calendar-check"></i>
+                <h3>Attendance Machines</h3>
+                <p>Deploying attendance machines to track and monitor employee presence.</p>
+            </div>
+            <div class="service">
+                <i class="fas fa-tools"></i>
+                <h3>Troubleshooting</h3>
+                <p>Offering technical support for both online and offline issues.</p>
+            </div>
+            <div class="service">
+                <i class="fas fa-download"></i>
+                <h3>Software Installation</h3>
+                <p>Installing and configuring software for your business needs.</p>
+            </div>
+            <div class="service">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Antivirus</h3>
+                <p>Providing antivirus installation and setup to protect your systems.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="fade-in">
+        <h2>Contact Me</h2>
+        <div class="contact-info">
+            <a href="mailto:ariiishaaaaaaaa@gmail.com">
+                <i class="fas fa-envelope"></i> Email
+            </a>
+            <a href="https://www.instagram.com/ariiishaaaaaaaa/" target="_blank">
+                <i class="fab fa-instagram"></i> Instagram
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2025 Arisha Khan - All Rights Reserved
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector('nav').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
